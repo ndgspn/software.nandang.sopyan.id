@@ -6,3 +6,4 @@ description: Part 1 - Konsep Pemrograman Berorientasi Objek - Apa yang dimaksud 
 #img: bicycle-object.png # Add image post (optional)
 tags: [Java,OOP,Object] # add tag
 ---
+Inprogress..
