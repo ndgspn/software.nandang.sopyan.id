@@ -1,0 +1,80 @@
+I"ò<blockquote>
+  <p>Tulisan ini diadaptasi dari dokumentasi https://docs.oracle.com/javase/tutorial/java/concepts/class.html
+. Jika ada kesalahan penulisan mohon hubungi admin melalui kolom diskusi.</p>
+</blockquote>
+
+<h2 id="part-2---konsep-pemrograman-berorientasi-objek">Part 2 - Konsep Pemrograman Berorientasi Objek</h2>
+
+<h3 id="apa-yang-dimaksud-dengan-class">Apa yang dimaksud dengan Class?</h3>
+
+<p>Dalam dunia nyata, kita sering menemukan banyak objek individu yang semuanya dari jenis yang sama. Sebagai contoh adalah Sepeda. Mungkin ada ribuan sepeda yang ada, semua dalam merk dan model yang sama. Setiap sepeda dibuat dariset blueprint (cetak biru) yang sama dan oleh karena itu mengandung komponen yang sama. Dalam istilah object-oriented, kita menyebut sepeda adalah sebagai instance dari class suatu object. Sebuah class adalah blueprint (cetak biru) dari mana objek individu dibuat.</p>
+
+<p>Sytanx Class Sepeda berikut adalah salah satu kemungkinan implementasi dari sepeda:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sepeda</span> <span class="o">{</span>
+
+    <span class="c1">// state/fields dari objek sepeda</span>
+    <span class="kt">int</span> <span class="n">cadence</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">kecepatan</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">gear</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+    <span class="c1">// method/behavior dari Sepeda</span>
+    <span class="kt">void</span> <span class="nf">ubahCadence</span><span class="o">(</span><span class="kt">int</span> <span class="n">cadence</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">cadence</span> <span class="o">=</span> <span class="n">cadence</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">ubahGear</span><span class="o">(</span><span class="kt">int</span> <span class="n">gear</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">gear</span> <span class="o">=</span> <span class="n">gear</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">tambahKecepatan</span><span class="o">(</span><span class="kt">int</span> <span class="n">tambahNilai</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">kecepatan</span> <span class="o">=</span> <span class="n">kecepatan</span> <span class="o">+</span> <span class="n">tambahNilai</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">kurangiKecepatan</span><span class="o">(</span><span class="kt">int</span> <span class="n">kurangiNilai</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">kecepatan</span> <span class="o">=</span> <span class="n">kecepatan</span> <span class="o">-</span> <span class="n">kurangiNilai</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">cetakStatus</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Cadence:"</span> <span class="o">+</span> <span class="n">cadence</span> <span class="o">+</span> 
+        <span class="s">"Kecepatan:"</span> <span class="o">+</span> <span class="n">kecepatan</span> <span class="o">+</span> 
+        <span class="s">" Gear:"</span> <span class="o">+</span> <span class="n">gear</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Syntax dari bahasa pemrograman Java diatas mungkin terlihat baru, tapi desain dari class ini adalah berdasarkan pada diskusi kita sebelumnya dari objek Sepeda. Variable/fields cadence, kecepatan, dan gear menggambarkan keadaan/state objek, dan method (ubahCadence, ubahGear, tambahKecepatan, kurangiKecepatan dan lainnya) mendefinisikan interksinya dengan dunia luar.</p>
+
+<p>Kita mungkin telah memperhatikan bahwa class Sepeda diatas tidak mengandung sebuah main method. Itu karena kode diatas bukan kode aplikasi yang lengkap; itu hanya blueprint (cetak biru) untuk sepeda yang mungkin digunakan dalam sebuah aplikasi. Tanggung jawab untuk membuat dan menggunakan objek baru Sepeda dimiliki beberapa class lain dalamaplikasi kita.</p>
+
+<p>Dibawah ini adalah contoh class DemoSepeda yang didalamnya terdapat dua object Sepeda terpisah (sepeda1, sepeda2) dan memanggil method dari objek tersebut:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoSepeda</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Buat dua objek sepeda yang berbeda</span>
+
+        <span class="nc">Sepeda</span> <span class="n">sepeda1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sepeda</span><span class="o">();</span>
+        <span class="nc">Sepeda</span> <span class="n">sepeda2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sepeda</span><span class="o">();</span>
+
+        <span class="c1">// panggil method</span>
+        <span class="c1">// untuk objek-objek tersebut</span>
+        <span class="n">sepeda1</span><span class="o">.</span><span class="na">ubahCadence</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+        <span class="n">sepeda1</span><span class="o">.</span><span class="na">tambahKecepatan</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+        <span class="n">sepeda1</span><span class="o">.</span><span class="na">ubahGear</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">sepeda1</span><span class="o">.</span><span class="na">cetakStatus</span><span class="o">();</span>
+
+        <span class="n">sepeda2</span><span class="o">.</span><span class="na">ubahCadence</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+        <span class="n">sepeda2</span><span class="o">.</span><span class="na">tambahKecepatan</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+        <span class="n">sepeda2</span><span class="o">.</span><span class="na">ubahGear</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">sepeda2</span><span class="o">.</span><span class="na">ubahCadence</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+        <span class="n">sepeda2</span><span class="o">.</span><span class="na">tambahKecepatan</span><span class="o">(</span><span class="mi">40</span><span class="o">);</span>
+        <span class="n">sepeda2</span><span class="o">.</span><span class="na">ubahGear</span><span class="o">(</span><span class="mi">3</span><span class="o">);;</span>
+        <span class="n">sepeda2</span><span class="o">.</span><span class="na">cetakStatus</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Hasil dari tes ini adalah menampilkan hasil akhir dari cadence, kecepatan, dan gear untuk dua objek sepeda:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cadence:50 Kecepatan:10 Gear:2
+Cadence:40 Kecepatan:50 Gear:3
+</code></pre></div></div>
+:ET
